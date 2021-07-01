@@ -1,36 +1,47 @@
 #include <stdio.h>
-#include <math.h>
+#include <stdbool.h>
 
-// print all prime factors of a given number n
-void primeFactors(int n)
+#define LEN 1001
+
+void sieve(int n)
 {
-    // even number
-    while (n % 2 == 0)
+    int spf[LEN] = {0};
+    // initialize the array and set all of its elements to 0
+    for (int i = 2; i <= LEN; i++)
     {
-        printf("%d ", 2);
-        n = n / 2;
-        printf("number is %d\n", n);
-    }
-
-    // n is odd
-    for (int i = 3; i <= sqrt(n); i = i + 2)
-    {
-        while (n % i == 0)
+        if (spf[i] == 0)
         {
-            n = n / i;
-            printf("%d ", i);
-            printf("number is %d\n", n);
+            spf[i] = i;
+            for (int j = i * i; j <= LEN; j += i)
+            {
+                if (spf[j] == 0)
+                {
+                    spf[j] = i;
+                }
+            }
         }
     }
 
-    // n is a prime number greater than 2
-    if (n > 2)
-        printf("%d ", n);
+    int arr[LEN] = {};
+    int num = n;
+    printf("the prime factor of %d is ", n);
+    int start = 0;
+    while (n != 1)
+    {
+        arr[start] = spf[n];
+        n /= spf[n];
+        start += 1;
+    }
+
+    for (int i = 0; i < start; i++)
+    {
+        printf("%d ", arr[i]);
+    }
 }
 
 int main()
 {
-    int n = 70;
-    primeFactors(n);
+    int n = 20;
+    sieve(n);
     return 0;
 }

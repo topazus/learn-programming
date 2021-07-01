@@ -1,9 +1,23 @@
-// Program to print all prime factors
 #include <stdio.h>
+#include <stdbool.h>
+#include <math.h>
 
-/* Driver program to test above function */
+#define LEN 1001
+
+void Sieve_of_Eratosthenes(int n)
+{
+    // intialzie a bool array to store the value of is_prime
+    int num[LEN] = {};
+
+    for (int i = 0; i <= n; i++)
+    {
+        printf("%d ", num[i]);
+    }
+}
+
 int main()
 {
-    printf("%d", 7 / 7);
+    int n = 100;
+    Sieve_of_Eratosthenes(n);
     return 0;
 }
