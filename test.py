@@ -1,1 +1,3 @@
-print(2 / 1)
+a = []
+a.append(1)
+print(a)
