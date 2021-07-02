@@ -2,6 +2,8 @@
     "files.associations": {
         "vector": "c",
         "cmath": "cpp",
-        "iomanip": "cpp"
+        "iomanip": "cpp",
+        "iostream": "cpp",
+        "ostream": "cpp"
     }
 }

@@ -13,7 +13,7 @@ int main()
     cout << sqrtf(a) << endl;
     cout << sqrtl(a) << endl;
 
-    long long b = LLONG_MAX; // 2^63 - 1
+    long long b = LLONG_MAX; // 2^63 - 1, or __LONG_LONG_MAX__
     cout << sqrt(b) << endl;
     cout << sqrtl(b) << endl;
 
