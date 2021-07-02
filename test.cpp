@@ -1,15 +1,9 @@
 #include <iostream>
-#include <iomanip>
-#include <cmath>
 using namespace std;
-
 int main()
 {
-    double a = 101;
-    cout.precision(12);
-    cout << fixed;
-
-    cout << __LONG_LONG_MAX__ << endl;
-
+    int arr[] = {5, 8, 1, 3, 6};
+    int len = *(&arr + 1) - arr;
+    cout << "The length of the array is: " << len;
     return 0;
 }

@@ -2,7 +2,7 @@ import math
 const acc = 1.0e-7
 
 proc f(x: float): float =
-    return ln(x) + x - 3
+    return sin(x) - x + 1
 
 proc bisection(a1, b1: float) =
     var
@@ -13,7 +13,7 @@ proc bisection(a1, b1: float) =
         return
     var c: float
     while (b-a) >= acc:
-        c = (a+b)/2
+        c = (a*f(b)-b*f(a)) / (f(b)-f(a))
         if f(c) == 0:
             break
         elif f(a)*f(c) < 0:
