@@ -1,15 +1,12 @@
-#include <bits/stdc++.h>
+#include <iostream>
 #include <cmath>
+//#include <iomanip>
+#define EPSILON 1.0e-5
 using namespace std;
 
 int main()
 {
-    int a[10];
-    fill_n(a, 10, 0);
-    for (int i = 0; i < 10; i++)
-    {
-        cout << a[i] << " ";
-    }
-
+    long double a = sqrt(2.0);
+    cout << setprecision(12) << a;
     return 0;
 }

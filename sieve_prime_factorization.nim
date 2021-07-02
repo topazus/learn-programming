@@ -22,11 +22,13 @@ proc Sieve_of_Eratosthenes(n: int)=
 proc least_prime_factor(n: int)=
     var a: array[len, int]
     a.fill(0)
-    for i in countup(2, int(sqrt(n.toFloat))):
+
+    for i in countup(2, n):
         if a[i]==0:
             a[i]=i
             for j in countup(i*i, n, i):
-                a[j]=i
+                if a[j]==0:
+                    a[j]=i
 
     var num: seq[int]
     for i in 2..n:
@@ -35,6 +37,25 @@ proc least_prime_factor(n: int)=
     echo num
     echo a[2 .. n]
 
+proc sieve(n: int)=
+    var spf: array[len, int]
+    spf.fill(0)
+
+    for i in countup(2, n):
+        if spf[i]==0:
+            spf[i]=i
+            for j in countup(i*i, n, i):
+                if spf[j]==0:
+                    spf[j]=i
+    echo "the prime factors of ", n, ":"
+    var factors: seq[int]
+    var num=n
+    while num != 1:
+        factors.add(spf[num])
+        num=num div spf[num]
+    echo factors
+
 var n=100
 Sieve_of_Eratosthenes(n)
 least_prime_factor(n)
+sieve(n)

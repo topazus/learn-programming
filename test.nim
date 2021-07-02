@@ -1,5 +1,2 @@
-
-import math
-
-var a:seq[int]
-echo a
+doAssert 1 < 0
+echo "am"
