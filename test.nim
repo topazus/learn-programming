@@ -1,7 +1,12 @@
-import math
-const acc=1.0e-7
+proc selectionSort[T](a: var openarray[T]) =
+  let n = a.len
+  for i in 0 ..< n:
+    var m = i
+    for j in i ..< n:
+      if a[j] < a[m]:
+        m = j
+    swap a[i], a[m]
 
-proc func(x: float): float =
-    return (ln(x) + x - 3)
-var a=func(10.0)
+var a = @[4, 65, 2, -31, 0, 99, 2, 83, 782]
+selectionSort a
 echo a
