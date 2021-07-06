@@ -1,15 +1,22 @@
-#include <iostream>
-using namespace std;
+#include <stdio.h>
+#include <stdbool.h>
 
-void bubble_sort(int arr[], int len)
+void swap(int *a, int *b)
 {
-    for (int i = 0; i < len - 1; i++)
+    int t = *a;
+    *a = *b;
+    *b = t;
+}
+
+void bubble_sort(int arr[], int n)
+{
+    for (int i = 0; i < n - 1; i++)
     {
-        for (int j = 0; j < len - i - 1; j++)
+        for (int j = 0; j < n - i - 1; j++)
         {
             if (arr[j] > arr[j + 1])
             {
-                swap(arr[j], arr[j + 1]);
+                swap(&arr[j], &arr[j + 1]);
             }
         }
     }
@@ -24,11 +31,12 @@ void bubble_sort_opt(int arr[], int len)
         {
             if (arr[j] > arr[j + 1])
             {
-                swap(arr[j], arr[j + 1]);
+                swap(&arr[j], &arr[j + 1]);
                 swapped = true;
             }
         }
-        // if no two elements were swapped by inner loop, then break
+        // if there is no swap in the current inner loop,
+        // break the whole loop
         if (swapped == false)
         {
             break;
@@ -47,7 +55,7 @@ void rec_buble_sort(int arr[], int n)
     {
         if (arr[i] > arr[i + 1])
         {
-            swap(arr[i], arr[i + 1]);
+            swap(&arr[i], &arr[i + 1]);
         }
     }
     rec_buble_sort(arr, n - 1);
@@ -56,17 +64,18 @@ void rec_buble_sort(int arr[], int n)
 void printArray(int arr[], int size)
 {
     for (int i = 0; i < size; i++)
-        cout << arr[i] << " ";
+        printf("%d ", arr[i]);
 }
 
 int main()
 {
-    int a[] = {37, 23, 0, 17, 12, 72, 31, 46, 100, 88, 54};
-    int n = sizeof(a) / sizeof(a[0]);
-    cout << "the initial array: ";
-    printArray(a, n);
-    rec_buble_sort(a, n);
-    cout << "\nthe sorted array: ";
-    printArray(a, n);
+    int arr[] = {64, 34, 25, 12, 22, 11, 90};
+    int len = *(&arr + 1) - arr;
+    int size = sizeof(arr) / sizeof(arr[0]);
+    printf("the unsorted array: ");
+    printArray(arr, size);
+    rec_buble_sort(arr, len);
+    printf("\nthe sorted array: ");
+    printArray(arr, size);
     return 0;
 }

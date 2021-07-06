@@ -1,44 +1,38 @@
-// C++ program for implementation of Bubble sort
+// C/C++ program for recursive implementation
+// of Bubble sort
 #include <bits/stdc++.h>
 using namespace std;
 
-void swap(int *xp, int *yp)
-{
-    int temp = *xp;
-    *xp = *yp;
-    *yp = temp;
-}
-
 // A function to implement bubble sort
-void bubbleSort(int arr[], int len)
+void bubbleSort(int arr[], int n)
 {
-    int i, j;
-    for (i = 0; i < len - 1; i++)
+    // One pass of bubble sort. After
+    // this pass, the largest element
+    // is moved (or bubbled) to end.
+    for (int i = 0; i < n - 1; i++)
+        if (arr[i] > arr[i + 1])
+            swap(arr[i], arr[i + 1]);
 
-        // Last i elements are already in place
-        for (j = 0; j < len - i - 1; j++)
-            if (arr[j] > arr[j + 1])
-                swap(&arr[j], &arr[j + 1]);
+    // Largest element is fixed,
+    // recur for remaining array
+    bubbleSort(arr, n - 1);
 }
 
 /* Function to print an array */
-void printArray(int arr[], int size)
+void printArray(int arr[], int n)
 {
-    int i;
-    for (i = 0; i < size; i++)
-        cout << arr[i] << " ";
-    cout << endl;
+    for (int i = 0; i < n; i++)
+        printf("%d ", arr[i]);
+    printf("\n");
 }
 
-// Driver code
+// Driver program to test above functions
 int main()
 {
-    int arr[] = {64, 34, 25, 12, 22, 11, 90};
+    int arr[] = {37, 23, 0, 17, 12, 72, 31, 46, 100, 88, 54};
     int n = sizeof(arr) / sizeof(arr[0]);
     bubbleSort(arr, n);
-    cout << "Sorted array: \n";
+    printf("Sorted array : \n");
     printArray(arr, n);
     return 0;
 }
-
-// This code is contributed by rathbhupendra
