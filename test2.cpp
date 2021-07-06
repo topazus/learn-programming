@@ -1,31 +1,20 @@
+#include <algorithm>
+#include <iterator>
 #include <iostream>
-using namespace std;
 
-void rec_buble_sort(int arr[], int n)
+template <typename ForwardIterator>
+void selection_sort(ForwardIterator begin, ForwardIterator end)
 {
-    // In the first loop, move the largest element to the end.
-    for (int i = 0; i < n - 1; i++)
+    for (auto i = begin; i != end; ++i)
     {
-        if (arr[i] > arr[i + 1])
-        {
-            swap(arr[i], arr[i + 1]);
-        }
+        std::iter_swap(i, std::min_element(i, end));
     }
-    rec_buble_sort(arr, n - 1);
-}
-
-void printArray(int arr[], int size)
-{
-    for (int i = 0; i < size; i++)
-        cout << arr[i] << " ";
 }
 
 int main()
 {
-    int a[] = {37, 23, 0, 17, 12, 72, 31, 46, 100, 88, 54};
-    int n = sizeof(a) / sizeof(a[0]);
-    printArray(a, n);
-    rec_buble_sort(a, n);
-    printArray(a, n);
-    return 0;
+    int a[] = {100, 2, 56, 200, -52, 3, 99, 33, 177, -199};
+    selection_sort(std::begin(a), std::end(a));
+    copy(std::begin(a), std::end(a), std::ostream_iterator<int>(std::cout, " "));
+    std::cout << "\n";
 }
