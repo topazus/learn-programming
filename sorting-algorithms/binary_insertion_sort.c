@@ -32,12 +32,10 @@ void binary_insert_sort(int arr[], int n)
     }
 }
 
-void printArray(int arr[], int size)
+void printArray(int arr[], int n)
 {
-    for (int i = 0; i < size; i++)
-    {
-        printf("%d ", arr[i]);
-    }
+    for (int i = 0; i < n; i++)
+        printf("%d%s", arr[i], i == n - 1 ? "\n" : " ");
 }
 
 int main()

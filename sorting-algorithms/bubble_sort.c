@@ -44,27 +44,29 @@ void bubble_sort_opt(int arr[], int len)
     }
 }
 
-void rec_buble_sort(int arr[], int n)
+void bubbleSort(int *a, int n)
 {
-    if (n == 1)
+    int j = n;
+    bool s;
+    while (s)
     {
-        return;
-    }
-    // In the first loop, move the largest element to the end.
-    for (int i = 0; i < n - 1; i++)
-    {
-        if (arr[i] > arr[i + 1])
+        s = false;
+        for (int i = 0; i < j; i++)
         {
-            swap(&arr[i], &arr[i + 1]);
+            if (a[i] > a[i + 1])
+            {
+                swap(&a[i], &a[i + 1]);
+                s = true;
+            }
         }
+        j--;
     }
-    rec_buble_sort(arr, n - 1);
 }
 
-void printArray(int arr[], int size)
+void printArray(int arr[], int n)
 {
-    for (int i = 0; i < size; i++)
-        printf("%d ", arr[i]);
+    for (int i = 0; i < n; i++)
+        printf("%d%s", arr[i], i == n - 1 ? "\n" : " ");
 }
 
 int main()
@@ -72,10 +74,8 @@ int main()
     int arr[] = {64, 34, 25, 12, 22, 11, 90};
     int len = *(&arr + 1) - arr;
     int size = sizeof(arr) / sizeof(arr[0]);
-    printf("the unsorted array: ");
     printArray(arr, size);
     rec_buble_sort(arr, len);
-    printf("\nthe sorted array: ");
     printArray(arr, size);
     return 0;
 }
