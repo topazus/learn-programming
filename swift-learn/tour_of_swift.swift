@@ -7,6 +7,26 @@ var a = 42
 a = 50
 let b = 1
 
+var minValue_Int = Int.min
+var maxvalue_Int = Int.max
+print(minValue_Int)
+print(maxvalue_Int)
+
+var minValue_UInt = UInt.min
+var maxvalue_UInt = UInt.max
+print(minValue_UInt)
+print(maxvalue_UInt)
+
+let twoThousand: UInt16 = 2
+let one: UInt8 = 1
+let three = two + UInt16(one)
+
+let three = 3
+let pointOne = 0.1
+// The rules for combining numeric constants and variables
+// are different from the rules for numeric literals.
+let threePointOne = Double(three) + pointOne
+
 let c: Double = 10
 print("a=\(a), b=\(b), c=\(c)")
 

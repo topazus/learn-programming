@@ -52,3 +52,10 @@ func commonElements<T: Sequence, U: Sequence>(_ lhs: T, _ rhs: U) -> [T.Element]
 
 let commonElem = commonElements([1, 2, 3], [4, 3, 2])
 print(commonElem)
+
+// use intersect() function in set
+let fruitsArray = ["apple", "mango", "blueberry", "orange"]
+let vegArray = ["tomato", "potato", "mango", "blueberry"]
+let fruitsSet = Set(fruitsArray)
+let vegSet = Set(vegArray)
+let output = Array(fruitsSet.intersection(vegSet))
