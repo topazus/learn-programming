@@ -83,6 +83,19 @@ if let name = optionalName {
 
 print(greeting)
 
+if let firstNumber = Int("4"), let secondNumber = Int("42"), firstNumber < secondNumber, secondNumber < 100 {
+    print("\(firstNumber) < \(secondNumber) < 100")
+}
+
+// Prints "4 < 42 < 100"
+
+let possibleString: String? = "An optional string."
+let forcedString: String = possibleString! // requires an exclamation point
+
+// implicit unwrapped optionals
+let assumedString: String! = "An implicitly unwrapped optional string."
+let implicitString: String = assumedString // no need for an exclamation point
+
 // ?? operator to provide a default value
 let nickname: String? = nil
 let fullName: String = "John Appleseed"
